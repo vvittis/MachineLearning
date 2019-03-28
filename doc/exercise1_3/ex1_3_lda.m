@@ -38,6 +38,7 @@ X2 = X_norm(c==2, :);
 
 %  Visualize the example dataset
 figure(1)
+title('LDA')
 hold on
 plot(X1(:, 1), X1(:, 2), 'ro');
 plot(X2(:, 1), X2(:, 2), 'ks');
@@ -114,6 +115,7 @@ X_rec  = recoverDataPCA(Z, U, K);
 %  Draw lines connecting the projected points to the original points
 fprintf('\nVisualizing example dataset for PCA.\n\n');
 figure(2)
+title('PCA')
 hold on;
 axis([-2.1 2.1 -2.1 2.1]); axis square;
 drawLine(-2.3*U(:,1), 2.3*U(:,1), '-.r', 'LineWidth', 1);
@@ -160,15 +162,25 @@ hold off
 
 NewDim = 2; %The new feature dimension after applying LDA
 v = myLDA(meas_norm, iris_labels, NewDim);
-%%
+
 %  Project the data on the direction of the two dimensional v
-[meas_reduced] = projectDataLDA(meas_norm, v);
+[meas_reduced] = projectDataLDA(meas_norm, v)';
 
 %  Visualize the sample dataset after LDA is applied
 %  Use different color/symbol for each class
 figure(4)
-hold on
 
+setosa = meas_reduced(1:50,:);    %Samples of Class 0
+versicolor = meas_reduced(51:100,:);  %Samples of Class 1
+Virginica = meas_reduced(101:end,:); %Samples of Class 2
+
+
+%  Visualize the example dataset
+hold on
+plot(setosa(:, 1), setosa(:, 2), 'bo');
+plot(versicolor(:, 1), versicolor(:, 2), 'rs');
+plot(Virginica(:, 1), Virginica(:, 2), 'g+');
 hold off
 
+%%
 
