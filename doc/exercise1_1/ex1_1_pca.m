@@ -19,7 +19,7 @@
 %% Initialization
 clear ; close all; clc
 
-%% ============ Part 1: PCA on 2D Samples ===================
+% ============ Part 1: PCA on 2D Samples ===================
 %  We use a small dataset that is easy to visualize
 %
 fprintf('Readinging and Visualizing initial 2D dataset.\n\n');
@@ -30,11 +30,11 @@ load ('ex1_1_data1.mat');
 x = X(:,1);
 y = X(:,2);
 %  Visualize the samples (Input your code)
-% figure(1)
-% %plot the samples 
+figure(1)
+% plot the samples 
 % 
-% plot(x,y,'.')
-% axis([0.5 6.5 2 8]); axis square;
+plot(x,y,'.')
+axis([-7 7 -3 8]); axis square;
 % hold on
 %fprintf('Program paused. Press enter to continue.\n');
 %pause;
@@ -45,11 +45,13 @@ y = X(:,2);
 
 
 [X_norm, mu, sigma] = featureNormalize(X);
-figure(1)
+% figure(1)
+
 xnew = X_norm(:,1);
 ynew = X_norm(:,2);
-plot(xnew,ynew,'.')
 hold on
+plot(xnew,ynew,'.r')
+hold off
 % figure (2)
 % scatter(xnew,ynew,'r')
 % axis([-2 2 -2 2]); axis square;
@@ -72,9 +74,11 @@ hold on
 mu = mean(X_norm); 
 %  Draw the eigenvectors centered at the mean of samples. These lines show the
 %  directions of maximum variations in the dataset.
-
+title('Data and principal components')
+hold on
 drawLine(mu, mu + 1.5 * S(1,1) * U(:,1)', '-k', 'LineWidth', 2);
-drawLine(mu, mu + 1.5 * S(2,2) * U(:,2)', '-k', 'LineWidth', 2);
+drawLine(mu, mu + 1.5 * S(2,2) * U(:,2)', '-g', 'LineWidth', 2);
+legend({'Initial data','Normalized data','1st component','2nd component'},'Location','northwest')
 hold off
 
 fprintf('Top eigenvector: \n');
@@ -84,7 +88,8 @@ fprintf('\n(you should expect to see -0.707107 -0.707107)\n');
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 %  First estimate the variance contribution of each principal component
-PCvariance = S / sum(S);
+S = diag(S);
+PCvariance = S / (sum(S));
 fprintf(' PCvariance = %f %f \n', PCvariance(1,1), PCvariance(2,1));
 fprintf('\n(you should expect to see 0.8678 and 0.1322)\n');
 
@@ -108,7 +113,9 @@ K = 1;
 Z = projectData(X_norm, U, K);
 fprintf('Projection of the first example: %f\n', Z(1));
 fprintf('\n(this value should be about 1.481274)\n\n');
-
+hold on
+plot(Z,Z,'c');
+hold off
 %  To visualize the samples of this reduced dimensional space 
 %  we have to recostruct (project) them back to the original one.  
 %  This will show you what the data looks like when 
@@ -124,6 +131,11 @@ plot(X_rec(:, 1), X_rec(:, 2), 'ro');
 for i = 1:size(X_norm, 1)
     drawLine(X_norm(i,:), X_rec(i,:), '--k', 'LineWidth', 1);
 end
+title('PCA results');
+legend({'Normalized data','Projected line','Recovered data','Projection Lines'},'Location','northwest')
+hold off
+pause;
+hold on
 scatter(x,y,'g');
 axis([-4 6.5 -4 8]); axis square;
 hold off
@@ -135,14 +147,18 @@ pause;
 %  We start the exercise by first loading and visualizing the dataset.
 %  The following code will load the dataset into your environment
 %
+clear all;clc ;close all
 fprintf('\nLoading face dataset.\n\n');
 
 %  Load Face dataset
-load ('ex1_1_faces.mat')
+load ('ex1_1_faces.mat');
 
 %  Display the first 100 faces in the dataset
-displayData(X(1:100, :));
 
+displayData(X(1:100, :));
+hold on
+title('Original Faces');
+hold off
 fprintf('Program paused. Press enter to continue.\n ');
 pause;
 
@@ -164,8 +180,11 @@ pause;
 [U, S] = myPCA(X_norm);
 
 %  Visualize the top 36 eigenvectors found
-displayData(U(:, 1:36)');
 
+displayData(U(:, 1:36)');
+hold on
+title('Top 36 eigenvectors');
+hold off
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
@@ -176,7 +195,7 @@ pause;
 fprintf('\nDimension reduction for face dataset.\n\n');
 
 
-K = 1000;
+K = 100;
 Z = projectData(X_norm, U, K);
 
 fprintf('The projected data Z has a size of: ')
@@ -191,15 +210,15 @@ pause;
 %  Compare to the original input, which is also displayed
 
 fprintf('\nVisualizing the projected (reduced dimension) faces.\n\n');
-
-K = 1000;
-X_rec  = recoverData(Z, U, K);
-
-% Display normalized data
 subplot(1, 2, 1);
 displayData(X_norm(1:100,:));
 title('Original faces');
 axis square;
+
+K = 100;
+X_rec  = recoverData(Z, U, K);
+
+% Display normalized data
 
 % Display reconstructed data from only k eigenfaces
 subplot(1, 2, 2);

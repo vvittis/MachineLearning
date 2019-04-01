@@ -40,7 +40,7 @@ function A = myLDA(Samples, Labels, NewDim)
          P(i)* cov(Samples(step+1:step+50,:));
          Sw = Sw + P(i)* cov(Samples(step+1:step+50,:));
     end
-    Sw;
+    Sw
     %Calculate the Global Mean
 	 for i = 1:NumFeatures
          m0(i) = 0;
@@ -48,7 +48,7 @@ function A = myLDA(Samples, Labels, NewDim)
              m0(i) = P(j).*( m0(i) + mu(j,i));
          end 
      end
-     m0;
+     m0
      
     %Calculate the Between Class Scatter Matrix
     Sb = zeros();
@@ -63,10 +63,10 @@ function A = myLDA(Samples, Labels, NewDim)
      EigMat = inv(Sw)*Sb;
     
     %Perform Eigendecomposition
-     [U,S]          = eig(EigMat)
+     [U,S]          = eig(EigMat);
      eigenval       = diag(S);
      [eigenval,ind] = sort(eigenval,1,'descend'); %Sort them 
-      U             = U(:,ind) %Corresponding eigenvectors
+      U             = U(:,ind); %Corresponding eigenvectors
       %Select the NewDim eigenvectors corresponding to the top NewDim
       S             = diag(eigenval);
       
@@ -74,4 +74,4 @@ function A = myLDA(Samples, Labels, NewDim)
     %eigenvalues (Assuming they are NewDim<=NumClasses-1)
 	%% You need to return the following variable correctly.
 	A=zeros(NumFeatures,NewDim); % Return the LDA projection vectors
-    A             = U(:,1:NewDim) ;
+    A             = U(:,1:NewDim) 

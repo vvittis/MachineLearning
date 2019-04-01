@@ -15,7 +15,7 @@ S = zeros(n);
 % Apply PCA by computing the eigenvectors and eigenvalues of the covariance matrix. 
 %
 
-covariancematrix1 = (1./(m-1)) *(X.'*X);
+covariancematrix1 = (1/(m-1)) *(X.'*X);
 
 [U,S]          = eig(covariancematrix1);
 eigenval       = diag(S);

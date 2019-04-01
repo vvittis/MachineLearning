@@ -134,7 +134,7 @@ plot(X_rec(c==2, 1), X_rec(c==2, 2), 'rs', 'MarkerFaceColor', 'r');
 for i = 1:size(X_norm, 1)
     drawLine(X_norm(i,:), X_rec(i,:), '--k', 'LineWidth', 1);
 end
-legend({'1st component','Normalized data of class 1 ','Normalized data of class 2 ','Recovered Data of class 1 ','Recovered Data of class 2','Projection lines'},'Location','northwest')
+legend({'1st component','Normalized data of class 1 ','Normalized data of class 2 ',,'Recovered Data of class 1 ','Recovered Data of class 2','Projection lines'},'Location','northwest')
 hold off
 
 
@@ -166,9 +166,6 @@ hold on
 plot(IRIS1(:, 1), IRIS1(:, 2), 'bo');
 plot(IRIS2(:, 1), IRIS2(:, 2), 'rs');
 plot(IRIS3(:, 1), IRIS3(:, 2), 'g+');
-title('IRIS - Original data');
-legend({'setosa','versicolor','Virginica'},'Location','northwest')
-
 hold off
 
 NewDim = 2; %The new feature dimension after applying LDA
@@ -188,12 +185,9 @@ Virginica = meas_reduced(101:end,:); %Samples of Class 2
 
 %  Visualize the example dataset
 hold on
-title('IRIS - Classified data');
-
 plot(setosa(:, 1), setosa(:, 2), 'bo');
 plot(versicolor(:, 1), versicolor(:, 2), 'rs');
 plot(Virginica(:, 1), Virginica(:, 2), 'g+');
-legend({'setosa','versicolor','Virginica'},'Location','northwest')
 hold off
 
 %%
