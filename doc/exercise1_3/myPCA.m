@@ -18,7 +18,7 @@ S = zeros(n);
 % Note that the dataset X is normalized, when calculating the covariance
 
 
-covariancematrix1 = (1./(m-1)) *(X.'*X);
+covariancematrix1 = (1./(m-1)) *(X.'*X)
 
 [U,S]          = eig(covariancematrix1);
 eigenval       = diag(S);
