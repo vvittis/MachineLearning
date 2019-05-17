@@ -18,14 +18,14 @@
 %% Initialization
 clear ; close all; clc
 
-%% Load Data
+% Load Data
 %  The first two columns contains the exam scores and the third column
 %  contains the label.
 
 data = load('exam_scores_data1.txt');
 X = data(:, [1, 2]); y = data(:, 3);
 
-%% ==================== Part 1: Plotting ====================
+% ==================== Part 1: Plotting ====================
 %  We start the exercise by first plotting the data to understand the 
 %  the problem we are working with.
 
@@ -39,6 +39,7 @@ hold on;
 % Labels and Legend
 xlabel('Exam 1 score')
 ylabel('Exam 2 score')
+title('Initial Data')
 
 % Specified in plot order
 legend('Admitted', 'Not admitted')
@@ -48,7 +49,7 @@ fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
 
-%% ============ Part 2: Compute Cost and Gradient ============
+% ============ Part 2: Compute Cost and Gradient ============
 %  In this part of the exercise, you will implement the cost and gradient
 %  for logistic regression. You neeed to complete the code in 
 %  costFunction.m
@@ -68,12 +69,11 @@ initial_theta = zeros(n + 1, 1);
 fprintf('Cost at initial theta (zeros): %f\n', cost);
 fprintf('Gradient at initial theta (zeros): \n');
 fprintf(' %f \n', grad);
-
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
-
-%% ============= Part 3: Optimizing using fminunc  =============
+%
+% ============= Part 3: Optimizing using fminunc  =============
 %  In this exercise, you will use a built-in function (fminunc) to find the
 %  optimal parameters theta.
 
@@ -97,7 +97,7 @@ hold on;
 % Labels and Legend
 xlabel('Exam 1 score')
 ylabel('Exam 2 score')
-
+title ('Decision boundary with fminunc')
 % Specified in plot order
 legend('Admitted', 'Not admitted')
 hold off;
@@ -105,7 +105,7 @@ hold off;
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
-%% ============== Part 4: Predict and Accuracies ==============
+% ============== Part 4: Predict and Accuracies ==============
 %  After learning the parameters, you'll like to use it to predict the outcomes
 %  on unseen data. In this part, you will use the logistic regression model
 %  to predict the probability that a student with score 45 on exam 1 and 
@@ -125,7 +125,7 @@ fprintf(['For a student with scores 45 and 85, we predict an admission ' ...
 
 % Compute accuracy on our training set
 p = predict(theta, X);
-
+sum  = sum(double(p == y));
 fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
 
 fprintf('\nProgram paused. Press enter to continue.\n');
