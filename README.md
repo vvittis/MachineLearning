@@ -5,7 +5,7 @@
 ### 1. Principle Component Analysis
 
 
-<img src="/photos/pca.png" width="500" height="400" /><img src="/photos/pca_on_faces.png" width="500" height="400" />
+<img src="/photos/pca.png" width="400" height="400" /><img src="/photos/pca_on_faces.png" width="400" height="400" />
 
 ### 2. Linear Discriminant Analysis (LDA Classifier)
 ![image](https://user-images.githubusercontent.com/34278399/139542582-46dc23d9-4493-4bb4-bed9-e000d7859a4b.png)
