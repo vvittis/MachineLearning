@@ -26,8 +26,8 @@
 
 ### 2. Gradient Descent Linear Regression
 
-![image](https://user-images.githubusercontent.com/34278399/139543193-f2fcf5a6-577e-43aa-b49f-9d801db698aa.png)
-![image](https://user-images.githubusercontent.com/34278399/139543198-509626bc-c49c-46f8-a3d1-096ec699cb3d.png)
+<img src="/photos/139543193-f2fcf5a6-577e-43aa-b49f-9d801db698aa.png" width="500" height="400" /><img src="/photos/pca_on_faces.png" width="500" height="400" />
+<img src="/photos/139543198-509626bc-c49c-46f8-a3d1-096ec699cb3d.png" width="500" height="400" /><img src="/photos/pca_on_faces.png" width="500" height="400" />
 
 ### 3. Sigmoid and SoftMax neurons: Approximate optimization using SGD 
 
