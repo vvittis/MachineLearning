@@ -3,8 +3,8 @@
 ## Exercise 1
 
 ### Principle Component Analysis
-![image](https://user-images.githubusercontent.com/34278399/139542561-0c61142a-8ba2-457e-a0bb-9645f65278bd.png)
-{:.some-css-class style="width: 200px"}
+![image](https://user-images.githubusercontent.com/34278399/139542561-0c61142a-8ba2-457e-a0bb-9645f65278bd.png =250x)
+
 ![image](https://user-images.githubusercontent.com/34278399/139542577-aefd7b0f-40ab-438a-88da-27b408a7a16e.png)
 
 ### Linear Discriminant Analysis (LDA Classifier)
