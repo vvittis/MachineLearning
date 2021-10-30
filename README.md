@@ -3,7 +3,10 @@
 ## Exercise 1
 
 ### Principle Component Analysis
-<img src="/photos/bayes1.png" width="100" height="100" />
+
+<img src="/photos/pca.png" width="400" height="400" />
+
+
 ![image](https://user-images.githubusercontent.com/34278399/139542577-aefd7b0f-40ab-438a-88da-27b408a7a16e.png)
 
 ### Linear Discriminant Analysis (LDA Classifier)
