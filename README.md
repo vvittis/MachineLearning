@@ -3,7 +3,7 @@
 ## Exercise 1
 
 ### Principle Component Analysis
-![image](/photos/bayes1.png)
+![image](/photos/bayes1.png =10x10)
 
 ![image](https://user-images.githubusercontent.com/34278399/139542577-aefd7b0f-40ab-438a-88da-27b408a7a16e.png)
 
